@@ -4,11 +4,14 @@ import { Home } from './pages/HomePage'
 import { Login } from './pages/LoginPage'
 import { Detail } from './pages/DetailPage'
 import { Summary } from './pages/SummaryPage'
+import { Navbar } from './components/navbar'
 function App() {
 
 
   return (
-    <Container>
+    <>
+    <Navbar />
+    <Container className='mb-4'>
       <Routes>
         <Route path="/" element={<Login/>} />
         <Route path="/home" element={ <Home/>} />
@@ -16,6 +19,7 @@ function App() {
         <Route path="/summary" element={ <Summary/>} />
       </Routes>
     </Container>
+    </>
   )
 }
 
