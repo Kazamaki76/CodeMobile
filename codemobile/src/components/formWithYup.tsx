@@ -9,13 +9,14 @@ interface IFormInput {
   email: string;
   password: string;
 }
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const schema = yup.object().shape({
   email: yup
-  .string()
-  .matches(emailRegex, 'Invalid email format')
-  .required('Email is required'),
+    .string()
+    .matches(emailRegex, 'Invalid email format')
+    .required('Email is required'),
   password: yup
     .string()
     .min(8, 'Password must be at least 8 characters')
@@ -30,6 +31,7 @@ const FormWithYup: React.FC = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = data => {
     if (data.email === 'aa@bb.cc' && data.password === '12345678') {
+      localStorage.setItem('authToken', 'your-auth-token');
       navigate('/home');
     } else {
       alert('Email or password incorrect');
